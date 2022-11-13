@@ -17,7 +17,7 @@ const Maincont = (temp) => {
                     <div className="temperature">여기날씨 {temp.temp.temperature} </div>
                 </div>
             </div>
-        </section>
+        </section>    
     );
 };
 

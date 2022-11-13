@@ -5,7 +5,8 @@ const MainText = ({ text }) => {
     return <div>{text}</div>;
 };
 
-const Maincont = () => {
+const Maincont = (temp) => {
+    console.log(temp.temp);
     return (
         <section className="cont__main">
             <div className="container">
@@ -13,6 +14,7 @@ const Maincont = () => {
                     {MainInfo.map((text, idx) => (
                         <MainText key={idx} text={text.text} />
                     ))}
+                    <div className="temperature">여기날씨 {temp.temp.temperature} </div>
                 </div>
             </div>
         </section>

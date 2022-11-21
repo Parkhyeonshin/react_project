@@ -1,0 +1,117 @@
+/* 반응형 1250, 780,  480*/
+@media (max-width: 1250px) {
+    #header .hambuger__menu {
+        display: block;
+    }
+    #main > .main__inner {
+        position: relative;
+    }
+    #contents {
+        width: 100%;
+    }
+    #aside {
+        position: absolute;
+        top: 0;
+        right: -60%;
+        width: 25%;
+        z-index: 100;
+        transform: scaleX(0);
+        transition: all 0.5s ease-out;
+        border-bottom-left-radius: 20px;
+    }
+    #aside.active {
+        right: 0%;
+        width: 60%;
+        transform: scaleX(1);
+
+        transition: all 0.5s ease-out;
+    }
+    .mainWeatherInfo__inner > .info {
+        padding: 5px 5px;
+    }
+    .mainWeather__box > .mainWeather__inner {
+        height: 400px;
+    }
+}
+@media (max-width: 780px) {
+    #contents > .contents__inner {
+        width: 99.5%;
+        padding: 0;
+    }
+    #aside {
+        width: 60%;
+    }
+    .mainWeather__box > .mainWeather__inner {
+        height: 370px;
+    }
+    .swiper-button-prev {
+        left: 10%;
+        width: 80px;
+        height: 80px;
+        padding: 20px 10px;
+    }
+    .swiper-button-next {
+        right: 10%;
+        width: 80px;
+        height: 80px;
+        padding: 20px 10px;
+    }
+    .swiper-wrapper .swiper-name {
+        padding: 10px 25px;
+    }
+    #contents > .contents__inner > h2 {
+        padding: 15px;
+    }
+    #contents > .contents__inner > .contents__descWrap > .time_weather > div {
+        width: 15%;
+    }
+    .mainWeatherInfo__inner > .info {
+        display: flex;
+    }
+    .mainWeatherInfo__inner > .info > h5 {
+        width: 60%;
+        font-size: 16px;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    .mainWeatherInfo__inner > .info > p {
+        width: 40%;
+        font-size: 15px;
+    }
+    .mainWeatherInfo__inner > .info:nth-child(1),
+    .mainWeatherInfo__inner > .info:nth-child(2),
+    .mainWeatherInfo__inner > .info:nth-child(3),
+    .mainWeatherInfo__inner > .info:nth-child(4) {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 18px;
+    }
+    .mainWeatherInfo__inner > .info:nth-child(4) {
+        margin-bottom: 0;
+    }
+    .mainWeather__inner {
+        position: relative;
+    }
+    .mainWeather__inner > .main_cityName {
+        left: 27%;
+        top: 8%;
+    }
+    .mainWeather__inner > .main_cityTemp {
+        left: 19%;
+    }
+    .mainWeather__inner > .main_weatherImg {
+        height: 150px;
+        width: 150px;
+        transform: none;
+        background-size: cover;
+        left: auto;
+        right: 2%;
+        top: -4%;
+    }
+}
+@media (max-width: 480px) {
+    #aside.active {
+        width: 95%;
+    }
+}

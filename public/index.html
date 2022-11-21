@@ -4,9 +4,93 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>React Api Project Website</title>
+        <title>Nall Meok | 오늘같은 날씨엔 뭐먹지?</title>
     </head>
     <body>
         <div id="root"></div>
+        <!-- <script src="../src/assets/js/hambuger.js"></script> -->
+        <script>
+            setTimeout(() => {
+                // input 박스 엔터키 검색 적용
+                function enterKey() {
+                    if (window.event.keyCode == 13) {
+                        // 엔터키가 눌렸을 때 실행하는 반응
+                        $("#search").submit();
+                        // alert("엔터 적용 완료");
+                    }
+                }
+
+                const swiperWrapper = document.querySelector(".swiper-wrapper");
+                let mainCityTemp = document.querySelector(".main_cityTemp > em");
+                let foodSunny = [
+                    { food: "./assets/img/화채.png", name: "화채" },
+                    { food: "./assets/img/냉면.png", name: "냉면" },
+                    { food: "./assets/img/삼계탕.png", name: "삼계탕" },
+                ];
+                let foodRainy = [
+                    { food: "./assets/img/참치.png", name: "참치" },
+                    { food: "./assets/img/콩국수.png", name: "콩국수" },
+                    { food: "./assets/img/화채.png", name: "화채" },
+                    { food: "./assets/img/냉면.png", name: "냉면" },
+                    { food: "./assets/img/삼계탕.png", name: "삼계탕" },
+                ];
+                let foodData = ``;
+
+                if (mainCityTemp.innerText <= 5) {
+                    for (i = 0; i < foodRainy.length; i++) {
+                        foodData = `
+                    <div class="swiper-slide">
+                        <img src="${foodRainy[i].food}" />
+                        <div class="swiper-name">${foodRainy[i].name}</div>
+                        </div>
+                        `;
+                        swiperWrapper.innerHTML += foodData;
+                    }
+                } else if (mainCityTemp.innerText > 5) {
+                    for (i = 0; i < foodSunny.length; i++) {
+                        foodData = `
+                    <div class="swiper-slide">
+                        <img src="${foodSunny[i].food}" />
+                        <div class="swiper-name">${foodSunny[i].name}</div>
+                        </div>
+                        `;
+                        swiperWrapper.innerHTML += foodData;
+                    }
+                }
+
+                let animateButton = function (e) {
+                    e.preventDefault;
+                    //reset animation
+                    e.target.classList.remove("animate");
+
+                    e.target.classList.add("animate");
+                    setTimeout(function () {
+                        e.target.classList.remove("animate");
+                    }, 700);
+                };
+
+                let bubblyButtons = document.getElementsByClassName("swiper-button-next");
+                let bubblyButtons2 = document.getElementsByClassName("swiper-button-prev");
+
+                for (let i = 0; i < bubblyButtons.length; i++) {
+                    bubblyButtons[i].addEventListener("click", animateButton, false);
+                }
+                for (let i = 0; i < bubblyButtons2.length; i++) {
+                    bubblyButtons2[i].addEventListener("click", animateButton, false);
+                }
+
+                const hambugerMenu = document.getElementById("hambuger__menu");
+
+                hambugerMenu.addEventListener("click", () => {
+                    if (hambugerMenu.classList.contains("active")) {
+                        document.querySelector("#aside").classList.remove("active");
+                        hambugerMenu.classList.remove("active");
+                    } else {
+                        document.querySelector("#aside").classList.add("active");
+                        hambugerMenu.classList.add("active");
+                    }
+                });
+            }, 200);
+        </script>
     </body>
 </html>

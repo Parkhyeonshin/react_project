@@ -2,18 +2,15 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Main } from "../src/components";
-import HeaderCont from "./components/HeaderCont";
 // import $ from "jquery";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <HeaderCont />
             <Routes>
                 <Route path="/" element={<Main />}></Route>
             </Routes>
         </BrowserRouter>
-        
     );
 };
 

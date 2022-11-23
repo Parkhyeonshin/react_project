@@ -127,28 +127,27 @@
 }
 
 /* aside > form */
-.aside__inner > form {
+
+.aside__inner > p {
+    position: relative;
     margin-bottom: 30px;
 }
-.aside__inner > form > p {
-    position: relative;
+.aside__inner > p > label {
 }
-.aside__inner > form > p > label {
-}
-.aside__inner > form > p > input {
+.aside__inner > p > input {
     color: #333;
     width: 100%;
     padding: 10px 10px 10px 50px;
     border: 0;
     border-radius: 50px;
 }
-.aside__inner > form > p > input::placeholder {
+.aside__inner > p > input::placeholder {
     color: #aaa;
 }
-.aside__inner > form > p > input:focus {
+.aside__inner > p > input:focus {
     outline: 2px solid #751d1a;
 }
-.aside__inner > form > p > img {
+.aside__inner > p > img {
     position: absolute;
     top: 10px;
     left: 20px;

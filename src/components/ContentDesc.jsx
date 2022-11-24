@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContentDesc = () => {
+const ContentDesc = ({hourtemp}) => {
     return (
         <div className="contents__descWrap">
             <div className="time_weather">

@@ -1,71 +1,74 @@
 import React, { useRef } from "react";
-// import $ from "jquery";
+// import { Loader } from "../components";
 
 const Aside = ({ temps, onSearch }) => {
-    console.log({ temps });
-    // // input 박스 엔터키 검색 적용
-    // function enterKey() {
-    //     if (window.event.keyCode === 13) {
-    //         // 엔터키가 눌렸을 때 실행하는 반응
-    //         $("#search").submit();
-    //         // alert("엔터 적용 완료");
-    //     }
-    // }
+    const inputRef = useRef();
+    // if (!temps?.length) return <Loader />;
+
     const handleSearch = () => {
         const value = inputRef.current.value;
         onSearch(value);
+        // document.querySelector(".main_cityName").innerHTML = `
+        // <img src=${require("../assets/img/mapMarker_ico.svg").default} alt="" />${temps.name}`;
+        inputRef.current.value = "";
+        // <img src=${require("../assets/img/mapMarker_ico.svg").default} alt="" />${value}`;
     };
-    const inputRef = useRef();
     const enterKey = (event) => {
         if (event.key === "Enter") {
+            console.log(inputRef.current.value);
             handleSearch();
         }
     };
     const onClick = () => {
         handleSearch();
     };
+    // console.log(temps);
+    // const tempstransform = Math.floor(temps.main.temp);
+    // const feeltempstransform = Math.floor(temps.main.feels_like);
+    // const tempIcon = temps.weather[0].icon;
+    console.log(temps.weather);
     return (
         <aside id="aside" className="aside__wrap">
             <div className="aside__inner">
-                {/* <form action="#c" className="search__box"> */}
                 <p>
                     <label htmlFor="search" className="blind">
                         검색
                     </label>
-                    <input type="search" id="search" placeholder="도시 이름을 입력해주세요." onKeyPress={enterKey} />
-                    <button type="submit" onClick={onClick}>
-                        1111
+                    <input ref={inputRef} type="text" id="search" title="검색" placeholder="도시 이름을 입력해주세요." onKeyPress={enterKey} />
+                    <button type="submit" onClick={onClick} className="searchBtn">
+                        검색
                     </button>
-                    <img src="assets/img/search_ico.svg" alt="검색 아이콘" />
+                    <img src={require("../assets/img/search_ico.svg").default} alt="검색 아이콘" />
                 </p>
-                {/* </form> */}
                 <div className="mainWeather__box">
                     <div className="mainWeather__inner">
                         <p className="main_cityName">
-                            <img src="assets/img/mapMarker_ico.svg" alt="" />
-                            Ansan
+                            <img src={require("../assets/img/mapMarker_ico.svg").default} alt="" />
+                            {temps.name}
                         </p>
                         <p className="main_cityTemp">
-                            <em>{temps?.main?.temp}</em> º
+                            <em>{temps.main?.temp}</em> º
                         </p>
-                        <div className="main_weatherImg"></div>
+                        <div className="main_weatherImg">
+                            {/* <img src={`http://openweathermap.org/img/wn/${temps.weather[0]?.icon}@2x.png`} alt="날씨아이콘" /> */}
+                        </div>
                         <div className="main__weatherInfo">
                             <div className="mainWeatherInfo__inner">
                                 <article className="info precipitation">
-                                    <h5>강수확률</h5>
-                                    <p>3%</p>
+                                    <h5>체감온도</h5>
+                                    <p>{temps.main?.feels_like} º</p>
                                 </article>
                                 <article className="info humidity">
                                     <h5>습도</h5>
-                                    <p>{temps?.main?.humidity}%</p>
+                                    <p>{temps.main?.humidity} %</p>
                                 </article>
                                 <article className="info wind">
                                     <h5>바람</h5>
-                                    <p>{temps?.wind?.speed}m/s</p>
+                                    <p>{temps.wind?.speed}m/s</p>
                                 </article>
                                 <article className="info dust">
-                                    <h5>미세먼지</h5>
-                                    <p>보통</p>
+                                    <h5>흐림지수</h5>
+                                    <p>{temps.clouds?.all} %</p>
                                 </article>
                             </div>
                         </div>

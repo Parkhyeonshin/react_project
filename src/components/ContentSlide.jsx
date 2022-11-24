@@ -7,11 +7,10 @@ import "swiper/css/navigation";
 import { EffectCoverflow, Navigation } from "swiper";
 
 function addbtn() {
-    setTimeout(() => {
-        document.querySelector(".swiper-button-prev").innerHTML = "Nope!";
-        document.querySelector(".swiper-button-next").innerHTML = "Good!";
-    }, 100);
-    console.log(document.querySelector(".swiper-button-next"));
+    // setTimeout(() => {
+    //     document.querySelector(".swiper-button-prev").innerHTML = "Nope!";
+    //     document.querySelector(".swiper-button-next").innerHTML = "Good!";
+    // }, 100);
 }
 const ContentSlide = () => {
     return (
@@ -54,7 +53,7 @@ const ContentSlide = () => {
                     <div className="swiper-name">냉면</div>
                 </SwiperSlide>
             </Swiper>
-            {addbtn()}
+            {/* {addbtn()} */}
             {/* <div className="swiper mySwiper">
         <div className="swiper-wrapper">
             <div className="swiper-slide">

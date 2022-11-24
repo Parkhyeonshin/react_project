@@ -9,7 +9,7 @@
     <body>
         <div id="root"></div>
         <!-- <script src="../src/assets/js/hambuger.js"></script> -->
-        <script>
+        <!-- <script>
             setTimeout(() => {
                 const swiperWrapper = document.querySelector(".swiper-wrapper");
                 let mainCityTemp = document.querySelector(".main_cityTemp > em");
@@ -27,27 +27,27 @@
                 ];
                 let foodData = ``;
 
-                if (mainCityTemp.innerText <= 5) {
-                    for (i = 0; i < foodRainy.length; i++) {
-                        foodData = `
-                    <div class="swiper-slide">
-                        <img src="${foodRainy[i].food}" />
-                        <div class="swiper-name">${foodRainy[i].name}</div>
-                        </div>
-                        `;
-                        swiperWrapper.innerHTML += foodData;
-                    }
-                } else if (mainCityTemp.innerText > 5) {
-                    for (i = 0; i < foodSunny.length; i++) {
-                        foodData = `
-                    <div class="swiper-slide">
-                        <img src="${foodSunny[i].food}" />
-                        <div class="swiper-name">${foodSunny[i].name}</div>
-                        </div>
-                        `;
-                        swiperWrapper.innerHTML += foodData;
-                    }
-                }
+                // if (mainCityTemp.innerText <= 5) {
+                //     for (i = 0; i < foodRainy.length; i++) {
+                //         foodData = `
+                //     <div class="swiper-slide">
+                //         <img src="${foodRainy[i].food}" />
+                //         <div class="swiper-name">${foodRainy[i].name}</div>
+                //         </div>
+                //         `;
+                //         swiperWrapper.innerHTML += foodData;
+                //     }
+                // } else if (mainCityTemp.innerText > 5) {
+                //     for (i = 0; i < foodSunny.length; i++) {
+                //         foodData = `
+                //     <div class="swiper-slide">
+                //         <img src="${foodSunny[i].food}" />
+                //         <div class="swiper-name">${foodSunny[i].name}</div>
+                //         </div>
+                //         `;
+                //         swiperWrapper.innerHTML += foodData;
+                //     }
+                // }
 
                 let animateButton = function (e) {
                     e.preventDefault;
@@ -81,7 +81,7 @@
                         hambugerMenu.classList.add("active");
                     }
                 });
-            }, 200);
-        </script>
+            }, 1000);
+        </script> -->
     </body>
 </html>

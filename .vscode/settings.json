@@ -1,4 +1,4 @@
 {
     "editor.codeActionsOnSave": {},
-    "files.autoSaveDelay": 600000
+    "files.autoSaveDelay": 60000
 }

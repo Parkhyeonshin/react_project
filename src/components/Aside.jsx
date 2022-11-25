@@ -1,17 +1,20 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { AsidemainBox } from "./";
+import { fetchAPI } from "../utils/fetchAPI";
+// import React, { useRef } from "react";
 // import { Loader } from "../components";
 
-const Aside = ({ temps, onSearch }) => {
+const Aside = ({ lon, onSearch }) => {
+    const [temp, setTemp] = useState([]);
+    useEffect(() => {
+        fetchAPI(`data/2.5/weather?lat=${lon.lat}&lon=${lon.lon}`).then((data) => setTemp(data));
+    }, [lon]);
     const inputRef = useRef();
-    // if (!temps?.length) return <Loader />;
 
     const handleSearch = () => {
         const value = inputRef.current.value;
         onSearch(value);
-        // document.querySelector(".main_cityName").innerHTML = `
-        // <img src=${require("../assets/img/mapMarker_ico.svg").default} alt="" />${temps.name}`;
         inputRef.current.value = "";
-        // <img src=${require("../assets/img/mapMarker_ico.svg").default} alt="" />${value}`;
     };
     const enterKey = (event) => {
         if (event.key === "Enter") {
@@ -22,11 +25,7 @@ const Aside = ({ temps, onSearch }) => {
     const onClick = () => {
         handleSearch();
     };
-    // console.log(temps);
-    // const tempstransform = Math.floor(temps.main.temp);
-    // const feeltempstransform = Math.floor(temps.main.feels_like);
-    // const tempIcon = temps.weather[0].icon;
-    console.log(temps.weather);
+
     return (
         <aside id="aside" className="aside__wrap">
             <div className="aside__inner">
@@ -38,42 +37,9 @@ const Aside = ({ temps, onSearch }) => {
                     <button type="submit" onClick={onClick} className="searchBtn">
                         검색
                     </button>
-                    <img src={require("../assets/img/search_ico.svg").default} alt="검색 아이콘" />
+                    <img src={require("../assets/img/search_ico.svg").default} alt="검색 아이콘" onClick={onClick} />
                 </p>
-                <div className="mainWeather__box">
-                    <div className="mainWeather__inner">
-                        <p className="main_cityName">
-                            <img src={require("../assets/img/mapMarker_ico.svg").default} alt="" />
-                            {temps.name}
-                        </p>
-                        <p className="main_cityTemp">
-                            <em>{temps.main?.temp}</em> º
-                        </p>
-                        <div className="main_weatherImg">
-                            {/* <img src={`http://openweathermap.org/img/wn/${temps.weather[0]?.icon}@2x.png`} alt="날씨아이콘" /> */}
-                        </div>
-                        <div className="main__weatherInfo">
-                            <div className="mainWeatherInfo__inner">
-                                <article className="info precipitation">
-                                    <h5>체감온도</h5>
-                                    <p>{temps.main?.feels_like} º</p>
-                                </article>
-                                <article className="info humidity">
-                                    <h5>습도</h5>
-                                    <p>{temps.main?.humidity} %</p>
-                                </article>
-                                <article className="info wind">
-                                    <h5>바람</h5>
-                                    <p>{temps.wind?.speed}m/s</p>
-                                </article>
-                                <article className="info dust">
-                                    <h5>흐림지수</h5>
-                                    <p>{temps.clouds?.all} %</p>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <AsidemainBox temp={temp} />
                 <div className="subWeather__box">
                     <div className="subWeather__inner">
                         <article className="sub_info japan">
